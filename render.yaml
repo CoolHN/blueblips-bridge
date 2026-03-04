@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: blueblips-bridge
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: SPOTIFY_USERNAME
+        sync: false        # you fill this in on Render dashboard
+      - key: SPOTIFY_PASSWORD
+        sync: false        # you fill this in on Render dashboard
+      - key: RUST_LOG
+        value: info
+    ports:
+      - port: 8080
+        protocol: HTTP
+      - port: 4070
+        protocol: TCP
